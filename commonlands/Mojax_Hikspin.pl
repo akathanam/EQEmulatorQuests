@@ -11,6 +11,9 @@ sub EVENT_SAY {
       if ($text=~/antonius bayle/i) {
         quest::say("How can it be that you do not know of Antonius Bayle? Was it not he who named this great continent of Antonica? Is it not he who rules over the most powerful city on Norrath? Surely you jest!");
       }
+	if ($text=~/i am from the hall of truth/i) {
+		quest::say("I have been expecting you. I am very parched. Could you please get me a bottle of milk? Once you do that will show you where I hid the note.");
+		}
 }
 
 sub EVENT_ITEM {
@@ -21,7 +24,7 @@ sub EVENT_ITEM {
     quest::faction( 105,-1 );
     quest::faction( 311,1 );
     quest::faction( 258,1 );
-	plugin::DoAnim("sit");
+	$npc->SetAppearance(1);
     quest::settimer(1,60);
   }
   plugin::return_items(\%itemcount);
@@ -29,6 +32,7 @@ sub EVENT_ITEM {
 
 sub EVENT_TIMER {
 	if($timer == 1) {
+			$npc->SetAppearance(0);
 			quest::stoptimer(1);
 			quest::start(550000);
 	}
