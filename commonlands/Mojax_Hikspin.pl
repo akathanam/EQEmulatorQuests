@@ -21,7 +21,25 @@ sub EVENT_ITEM {
     quest::faction( 105,-1 );
     quest::faction( 311,1 );
     quest::faction( 258,1 );
-    quest::spawn2(21136,0,0,2750,-307,-62, 0);
+	plugin::DoAnim("sit");
+    quest::settimer(1,60);
   }
   plugin::return_items(\%itemcount);
+}
+
+sub EVENT_TIMER {
+	if($timer == 1) {
+			quest::stoptimer(1);
+			quest::start(550000);
+	}
+}
+
+sub EVENT_WAYPOINT_ARRIVE {
+	
+	if($wp eq 3) {
+		quest::spawn2(408198,0,0,1474,394,26,0);
+	}
+	if($wp eq 4) {
+		quest::respawn(407014, 0);
+	}
 }
