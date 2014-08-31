@@ -21,7 +21,7 @@ sub EVENT_ITEM {
     quest::faction( 105,-1 );
     quest::faction( 311,1 );
     quest::faction( 258,1 );
-    quest::spawn2(21136,0,0,2750,-307,-62);
+    quest::spawn2(21136,0,0,2750,-307,-62, 0);
   }
   plugin::return_items(\%itemcount);
 }
